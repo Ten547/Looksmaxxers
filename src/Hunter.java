@@ -133,16 +133,16 @@ public class Hunter {
                 printableKit += item + space;
             }
         }
-        return printableKit;
+        return Colors.PURPLE + printableKit;
     }
 
     /**
      * @return A string representation of the hunter.
      */
     public String infoString() {
-        String str = hunterName + " has " + gold + " gold";
+        String str = hunterName + " has " +  gold + Colors.YELLOW + " gold" +  Colors.RESET;
         if (!kitIsEmpty()) {
-            str += " and " + getInventory();
+            str += " and " + Colors.PURPLE + getInventory() + Colors.RESET ;
         }
         return str;
     }
