@@ -58,7 +58,7 @@ public class Shop {
             }
         } else {
             System.out.println("What're you lookin' to sell? ");
-            System.out.print("You currently have the following items: " + customer.getInventory());
+            System.out.print("You currently have the following items: " + Colors.PURPLE + customer.getInventory() +  Colors.RESET);
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, false);
             if (cost == 0) {
@@ -81,11 +81,11 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str =  "Water: "  + WATER_COST + " gold\n";
+        str += "Rope: " + ROPE_COST  + " gold\n";
+        str +=  "Machete: " + MACHETE_COST   + " gold\n";
+        str +=  "Horse: " + HORSE_COST  + " gold\n";
+        str +=  "Boat: " + BOAT_COST  + " gold\n";
         return str;
     }
 
