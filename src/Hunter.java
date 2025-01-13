@@ -3,12 +3,13 @@
  * This class represents the treasure hunter character (the player) in the Treasure Hunt game.
  * This code has been adapted from Ivan Turner's original program -- thank you Mr. Turner!
  */
-
+import java.util.ArrayList;
 public class Hunter {
     //instance variables
     private String hunterName;
     private String[] kit;
     private int gold;
+    private ArrayList<String> inventory;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -20,6 +21,7 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[5]; // only 5 possible items can be stored in kit
         gold = startingGold;
+        this.inventory = new ArrayList<>();
     }
 
     //Accessors
@@ -93,13 +95,10 @@ public class Hunter {
      * @param item The item to be added to the kit.
      * @return true if the item is not in the kit and has been added.
      */
-    private boolean addItem(String item) {
-        if (!hasItemInKit(item)) {
-            int idx = emptyPositionInKit();
-            kit[idx] = item;
-            return true;
+    public void addItem(String item) {
+        if (!inventory.contains(item)) {
+            inventory.add(item);
         }
-        return false;
     }
 
     /**
@@ -124,18 +123,9 @@ public class Hunter {
      *
      * @return The printable String representation of the inventory.
      */
-    public String getInventory() {
-        String printableKit = "";
-        String space = " ";
-
-        for (String item : kit) {
-            if (item != null) {
-                printableKit += item + space;
-            }
-        }
-        return Colors.PURPLE + printableKit;
-    }
-
+     public String getInventory() {
+         return inventory.toString();
+     }
     /**
      * @return A string representation of the hunter.
      */

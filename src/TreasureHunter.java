@@ -79,7 +79,11 @@ public class TreasureHunter {
         }
         if (testMode) {
             hunter = new Hunter(name, 100);
-            
+            hunter.addItem("water");
+            hunter.addItem("rope");
+            hunter.addItem("machete");
+            hunter.addItem("horse");
+            hunter.addItem("boat");
         }
 
         // note that we don't need to access the Shop object
