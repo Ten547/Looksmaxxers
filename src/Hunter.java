@@ -40,9 +40,11 @@ public class Hunter {
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {
-            gold = 0;
+            TreasureHunter game = new TreasureHunter();
+            game.endGame();
         }
     }
+
 
     /**
      * Buys an item from a shop.

@@ -68,7 +68,18 @@ public class Town {
             printMessage = "You used your " + item + " to cross the " + Colors.CYAN + terrain.getTerrainName() +  Colors.RESET + ".";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, your " + item + " broke.";
+                if (item.equals("water"))
+                    System.out.println("\\nUnfortunately, your " + item + " ran out.");
+                } else if (item.equals("rope")) {
+                System.out.println("\nUnfortunately, your " + item + " ripped apart.");
+                } else if (item.equals("machete")) {
+                System.out.println("\nUnfortunately, your " + item + " was shattered.");
+                } else if (item.equals("horse")) {
+                System.out.println("\nUnfortunately, your " + item + " is exhausted.");
+                } else if (item.equals("boat")) {
+                System.out.println("\nUnfortunately, your " + item + " sank.");
+                } else if (item.equals("boots")) {
+                System.out.println("\nUnfortunately, your " + item + " wore down..");
             }
             return true;
         }

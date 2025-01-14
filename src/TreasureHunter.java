@@ -155,4 +155,12 @@ public class TreasureHunter {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
     }
+    public void endGame () {
+        System.out.println("Huh? You don't have enough money to pay us, stranger? You're dead meat, kid.");
+        System.out.println();
+        System.out.println("Sorry, game over!");
+        System.exit(0);
+
+    }
+
 }
