@@ -77,14 +77,7 @@ public class TreasureHunter {
             // and the town is "tougher"
             toughness = 0.75;
         }
-        if (testMode) {
-            hunter = new Hunter(name, 100);
-            hunter.addItem("water");
-            hunter.addItem("rope");
-            hunter.addItem("machete");
-            hunter.addItem("horse");
-            hunter.addItem("boat");
-        }
+
 
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance

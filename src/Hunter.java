@@ -95,10 +95,13 @@ public class Hunter {
      * @param item The item to be added to the kit.
      * @return true if the item is not in the kit and has been added.
      */
-    public void addItem(String item) {
-        if (!inventory.contains(item)) {
-            inventory.add(item);
+    private boolean addItem(String item) {
+        if (!hasItemInKit(item)) {
+            int idx = emptyPositionInKit();
+            kit[idx] = item;
+            return true;
         }
+        return false;
     }
 
     /**
@@ -124,7 +127,14 @@ public class Hunter {
      * @return The printable String representation of the inventory.
      */
      public String getInventory() {
-         return inventory.toString();
+         String printableKit = "";
+         String space = " ";
+         for (String item : kit) {
+             if (item != null) {
+                 printableKit += item + space;
+             }
+         }
+         return Colors.PURPLE + printableKit;
      }
     /**
      * @return A string representation of the hunter.
