@@ -22,6 +22,9 @@ public class Hunter {
         kit = new String[5]; // only 5 possible items can be stored in kit
         gold = startingGold;
         this.inventory = new ArrayList<>();
+        if (startingGold==100) {
+            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots"};
+        }
     }
 
     //Accessors
