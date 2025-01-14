@@ -49,7 +49,7 @@ public class TreasureHunter {
         System.out.println("Welcome to TREASURE HUNTER!");
         System.out.println("Going hunting for the big treasure, eh?");
         System.out.print("What's your name, Hunter? ");
-        String name = SCANNER.nextLine().toLowerCase();
+        name = SCANNER.nextLine().toLowerCase();
 
         // set hunter instance variable
         hunter = new Hunter(name, 20);
