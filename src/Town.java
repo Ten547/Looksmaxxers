@@ -11,6 +11,7 @@ public class Town {
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private boolean easyTown;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -29,6 +30,7 @@ public class Town {
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
+        easyTown = (Math.random()<toughness);
     }
 
     public Terrain getTerrain() {
@@ -93,7 +95,10 @@ public class Town {
         double noTroubleChance;
         if (toughTown) {
             noTroubleChance = 0.66;
-        } else {
+        } else if (easyTown) {
+            noTroubleChance = .1;
+        }
+        else {
             noTroubleChance = 0.33;
         }
         if (Math.random() > noTroubleChance) {
