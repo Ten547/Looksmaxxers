@@ -10,6 +10,8 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private ArrayList<String> inventory;
+    private String[] treasure = new String[3];
+    private String treasures;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -18,6 +20,7 @@ public class Hunter {
      * @param startingGold The gold the hunter starts with.
      */
     public Hunter(String hunterName, int startingGold) {
+
         this.hunterName = hunterName;
         kit = new String[7]; // only 7 possible items can be stored in kit
         gold = startingGold;
@@ -199,5 +202,71 @@ public class Hunter {
             }
         }
         return -1;
+    }
+
+    public void huntForTreasure (String y) {
+        TreasureHunter a = new TreasureHunter();
+        String current = y;
+
+        String one = treasure[0];
+        String two = treasure[1];
+        String three = treasure[2];
+        if (one==(null)) {
+            one = "";
+        }
+        if (two==(null)) {
+            two = "";
+        }
+        if (three==(null)) {
+            three = "";
+        }
+        if (current.equals("dust")) {
+            System.out.println("You found dust womp womp");
+        } else {
+            if (current.equals("gem")) {
+                if (!one.equals("gem") && !two.equals("gem") && !three.equals("gem")) {
+                    int count = 0;
+                    for (int x = 0; x < treasure.length; x++) {
+                        if (treasure[x] != null && count == 0) {
+                            treasure[x] = "gem";
+                            count++;
+                        }
+                    }
+
+                    System.out.println("You found a gem!");
+                } else {
+                    System.out.println("You already have a gem womp womp!");
+                }
+            }
+            if (current.equals("trophy")) {
+                if (!one.equals("trophy") && !two.equals("trophy") && !three.equals("trophy")) {
+                    int count = 0;
+                    for (int x = 0; x < treasure.length; x++) {
+                        if (treasure[x] != null && count == 0) {
+                            treasure[x] = "trophy";
+                            count++;
+                        }
+                    }
+                    System.out.println("You found a trophy!");
+                } else {
+                    System.out.println("You already have a trophy womp womp!");
+                }
+
+            }
+            if (current.equals("crown")) {
+                if (!one.equals("crown") && !two.equals("crown") && !three.equals("crown")) {
+                    int count = 0;
+                    for (int x = 0; x < treasure.length; x++) {
+                        if (treasure[x] != null && count == 0) {
+                            treasure[x] = "crown";
+                            count++;
+                        }
+                    }
+                    System.out.println("You found a crown");
+                } else {
+                    System.out.println("You already have a crown and you found it again womp womp!");
+                }
+            }
+        }
     }
 }
