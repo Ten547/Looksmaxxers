@@ -19,11 +19,11 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
-        kit = new String[5]; // only 5 possible items can be stored in kit
+        kit = new String[7]; // only 7 possible items can be stored in kit
         gold = startingGold;
         this.inventory = new ArrayList<>();
         if (startingGold==100) {
-            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots"};
+            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots, shovel"};
         }
     }
 
@@ -43,6 +43,10 @@ public class Hunter {
             TreasureHunter game = new TreasureHunter();
             game.endGame();
         }
+    }
+
+    public int getGold () {
+        return gold;
     }
 
 

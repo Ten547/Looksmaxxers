@@ -79,8 +79,11 @@ public class Town {
                 } else if (item.equals("boat")) {
                 System.out.println("\nUnfortunately, your " + item + " sank.");
                 } else if (item.equals("boots")) {
-                System.out.println("\nUnfortunately, your " + item + " wore down..");
+                System.out.println("\nUnfortunately, your " + item + " wore down.");
+            } else if (item.equals("shovel")) {
+                System.out.println("\nUnfortunately, your " + item + " was used up.");
             }
+
             return true;
         }
 
@@ -163,5 +166,26 @@ public class Town {
     private boolean checkItemBreak() {
         double rand = Math.random();
         return (rand < 0.5);
+    }
+
+    public double checkSuccess() {
+        double checkSuccess = Math.random();
+        return checkSuccess;
+    }
+
+    public void digForGold () {
+    if (hunter.hasItemInKit("shovel")) {
+        if (checkSuccess() < 0.5) {
+            hunter.changeGold((int) (Math.random() * 20) + 1);
+            System.out.println("You dug up, and got " + hunter.getGold() + "gold.");
+        }
+        else if (checkSuccess() == 0.5) {
+            hunter.changeGold((int) (Math.random() * 20) + 1);
+            System.out.println("You dug up, and got " + hunter.getGold() + "gold.");
+        }
+        else if (checkSuccess() > 0.5) {
+            System.out.println("You dug for hours, and found... dirt.");
+        }
+    }
     }
 }
