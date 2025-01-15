@@ -171,40 +171,42 @@ public class Town {
             return (rand < 0.5);
         }
     }
-
     public double checkSuccess() {
         double checkSuccess = Math.random();
         return checkSuccess;
     }
 
     public void digForGold () {
-    int count = 0;
+        int count = 0;
         if (leaveTown()) {
             count = 0;
         }
-
         int goldFromDigging = (int) (Math.random() * 20) + 1;
-
         if (hunter.hasItemInKit("shovel")) {
 
-        if (checkSuccess() > 0.5) {
-            hunter.changeGold(goldFromDigging);
-            System.out.println("You dug up, and got " + goldFromDigging + " gold.");
-            count += 1;
-        }
-        else if (checkSuccess() == 0.5) {
-            hunter.changeGold(goldFromDigging);
-            System.out.println("You dug up, and got " + goldFromDigging + " gold.");
-            count += 1;
-        }
-        else if (checkSuccess() < 0.5) {
-            System.out.println("You dug for hours, and found... dirt.");
-            count += 1;
-        }
-            if (count > 0) {
-                System.out.println("You've already used your shovel in this town. Maybe read the sign and dig elsewhere.");
+            if (checkSuccess() > 0.5) {
+                hunter.changeGold(goldFromDigging);
+                System.out.println("You dug up, and got " + goldFromDigging + " gold.");
+                count += 1;
             }
+            else if (checkSuccess() == 0.5) {
+                hunter.changeGold(goldFromDigging);
+                System.out.println("You dug up, and got " + goldFromDigging + " gold.");
+                count += 1;
+            }
+            else if (checkSuccess() < 0.5) {
+                System.out.println("You dug for hours, and found... dirt.");
+                count += 1;
+            }
+            if (count > 0) {
+                System.out.println("Do not dig in this town. Read the sign and dig elsewhere.");
+                if (!leaveTown()) {
+                    hunter.removeItemFromKit("shovel");
+                } else {
+                    hunter.addItem("shovel");
+                }
+            }
+        }
     }
 
-    }
 }
