@@ -161,7 +161,11 @@ public class Town {
      * @return true if the item broke.
      */
     private boolean checkItemBreak() {
-        double rand = Math.random();
-        return (rand < 0.5);
+        if (easyTown) {
+        return false;
+        } else {
+            double rand = Math.random();
+            return (rand < 0.5);
+        }
     }
 }
