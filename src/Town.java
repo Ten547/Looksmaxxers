@@ -174,18 +174,33 @@ public class Town {
     }
 
     public void digForGold () {
-    if (hunter.hasItemInKit("shovel")) {
-        if (checkSuccess() < 0.5) {
-            hunter.changeGold((int) (Math.random() * 20) + 1);
-            System.out.println("You dug up, and got " + hunter.getGold() + "gold.");
+    int count = 0;
+        if (leaveTown()) {
+            count = 0;
+        }
+
+        int goldFromDigging = (int) (Math.random() * 20) + 1;
+
+        if (hunter.hasItemInKit("shovel")) {
+
+        if (checkSuccess() > 0.5) {
+            hunter.changeGold(goldFromDigging);
+            System.out.println("You dug up, and got " + goldFromDigging + " gold.");
+            count += 1;
         }
         else if (checkSuccess() == 0.5) {
-            hunter.changeGold((int) (Math.random() * 20) + 1);
-            System.out.println("You dug up, and got " + hunter.getGold() + "gold.");
+            hunter.changeGold(goldFromDigging);
+            System.out.println("You dug up, and got " + goldFromDigging + " gold.");
+            count += 1;
         }
-        else if (checkSuccess() > 0.5) {
+        else if (checkSuccess() < 0.5) {
             System.out.println("You dug for hours, and found... dirt.");
+            count += 1;
         }
+            if (count > 0) {
+                System.out.println("You've already used your shovel in this town. Maybe read the sign and dig elsewhere.");
+            }
     }
+
     }
 }
