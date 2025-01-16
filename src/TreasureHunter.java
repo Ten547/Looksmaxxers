@@ -24,6 +24,7 @@ public class TreasureHunter {
     private int count = 0;
     private int treasurecount = 0;
     private String currentTreasure;
+    private int digCount = 0;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -93,6 +94,7 @@ public class TreasureHunter {
             currentTreasure = "dust";
         }
         treasurecount = count-1;
+        digCount = count-1;
         double markdown = 0.25;
         double toughness = 0.4;
         if (hardMode) {
@@ -172,7 +174,12 @@ public class TreasureHunter {
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else if (choice.equals("d")) {
-            currentTown.digForGold();
+            if (digCount<count) {
+                currentTown.digForGold();
+                digCount++;
+            } else {
+                System.out.println("You have already dug here go somewhere else!");
+            }
         } else if (choice.equals("h")){
             if (treasurecount<count) {
                 hunter.huntForTreasure(currentTreasure);

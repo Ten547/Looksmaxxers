@@ -26,7 +26,7 @@ public class Hunter {
         gold = startingGold;
         this.inventory = new ArrayList<>();
         if (startingGold==100) {
-            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots, shovel"};
+            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots", "shovel"};
         }
     }
 
