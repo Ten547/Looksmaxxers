@@ -26,7 +26,7 @@ public class TreasureHunter {
     private int treasurecount = 0;
     private String currentTreasure;
     private int digCount = 0;
-
+    private boolean samuraiMode;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -36,6 +36,7 @@ public class TreasureHunter {
         hunter = null;
         startingGold = 0;
         name = null;
+        samuraiMode = false;
     }
 
     /**
@@ -64,7 +65,7 @@ public class TreasureHunter {
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
      */
-    private void welcomePlayer() {
+    public void welcomePlayer() {
         System.out.println("Welcome to TREASURE HUNTER!");
         System.out.println("Going hunting for the big treasure, eh?");
         System.out.print("What's your name, Hunter? ");
@@ -73,7 +74,7 @@ public class TreasureHunter {
         // set hunter instance variable
 
 
-        System.out.print("Hard mode? (e/n/h/test): ");
+        System.out.print("Hard mode? (e/n/h/test/???): ");
         String hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("h")) {
             hardMode = true;
@@ -88,8 +89,15 @@ public class TreasureHunter {
             hunter = new Hunter(name, 40);
             easyMode = true;
         }
+        if (hard.equals("s")) {
+            samuraiMode = true;
+            hunter = new Hunter(name, 0);
+        }
 
+    }
 
+    public boolean isSamuraiMode () {
+        return samuraiMode;
     }
 
     /**
