@@ -161,6 +161,8 @@ public class Shop {
             return BOOTS_COST;
         } else if (item.equals("shovel")) {
             return SHOVEL_COST;
+        } else if (item.equals("sword")){
+            return SWORD_COST;
         } else {
             return 0;
         }
