@@ -1,4 +1,5 @@
 import javax.swing.text.DefaultEditorKit;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -139,6 +140,7 @@ public class TreasureHunter {
             System.out.println("***");
             System.out.println(hunter.infoString());
             System.out.println(currentTown.infoString());
+            System.out.println((hunter.getTreasure()));
             System.out.println("(H)unt for treasure.");
             System.out.println("(B)uy something at the shop.");
             System.out.println("(S)ell something at the shop.");

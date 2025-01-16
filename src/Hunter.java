@@ -30,6 +30,21 @@ public class Hunter {
         }
     }
 
+    public String getTreasure() {
+        String end = "";
+        int count = 0;
+        for (int x  = 0; x < 3; x++) {
+            if (treasure[x]!=null) {
+                end += " a " + treasure[x] ;
+                count++;
+            }
+        }
+        if (count==0) {
+            return "You found no treasure";
+        }
+        return "treasures found: " + end;
+    }
+
     //Accessors
     public String getHunterName() {
         return hunterName;
@@ -227,7 +242,7 @@ public class Hunter {
                 if (!one.equals("gem") && !two.equals("gem") && !three.equals("gem")) {
                     int count = 0;
                     for (int x = 0; x < treasure.length; x++) {
-                        if (treasure[x] != null && count == 0) {
+                        if (treasure[x] != "null" && treasure[x] != "trophy" && treasure[x] != "crown" && count == 0) {
                             treasure[x] = "gem";
                             count++;
                         }
@@ -242,11 +257,12 @@ public class Hunter {
                 if (!one.equals("trophy") && !two.equals("trophy") && !three.equals("trophy")) {
                     int count = 0;
                     for (int x = 0; x < treasure.length; x++) {
-                        if (treasure[x] != null && count == 0) {
+                        if (treasure[x] != "null" && treasure[x] != "crown" && treasure[x] != "gem" && count == 0) {
                             treasure[x] = "trophy";
                             count++;
                         }
                     }
+
                     System.out.println("You found a trophy!");
                 } else {
                     System.out.println("You already have a trophy womp womp!");
@@ -257,7 +273,7 @@ public class Hunter {
                 if (!one.equals("crown") && !two.equals("crown") && !three.equals("crown")) {
                     int count = 0;
                     for (int x = 0; x < treasure.length; x++) {
-                        if (treasure[x] != null && count == 0) {
+                        if (treasure[x] != "null" && treasure[x] != "trophy" && treasure[x] != "gem" && count == 0) {
                             treasure[x] = "crown";
                             count++;
                         }
