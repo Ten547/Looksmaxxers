@@ -30,7 +30,7 @@ public class Town {
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
-        easyTown = (Math.random()<toughness);
+        easyTown = (Math.random() < toughness);
     }
 
     public Terrain getTerrain() {
@@ -47,6 +47,14 @@ public class Town {
      * @param hunter The arriving Hunter.
      */
     public void hunterArrives(Hunter hunter) {
+        TreasureHunter a = new TreasureHunter();
+        String mode = a.mode();
+        System.out.println(mode);
+        if (mode.equals("e")) {
+            easyTown = true;
+        } if (mode.equals("h")) {
+            toughTown = true;
+        }
         this.hunter = hunter;
         printMessage = "Welcome to town, " + hunter.getHunterName() + ".";
         if (toughTown) {
@@ -164,7 +172,9 @@ public class Town {
      * @return true if the item broke.
      */
     private boolean checkItemBreak() {
+        System.out.println(easyTown);
         if (easyTown) {
+            System.out.println("lol");
         return false;
         } else {
             double rand = Math.random();

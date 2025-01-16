@@ -34,9 +34,7 @@ public class TreasureHunter {
         // these will be initialized in the play method
         currentTown = null;
         hunter = null;
-        hardMode = false;
         startingGold = 0;
-        testMode = false;
         name = null;
     }
 
@@ -48,7 +46,21 @@ public class TreasureHunter {
         enterTown();
         showMenu();
     }
+    public String mode() {
 
+        if (easyMode) {
+            return "e";
+        }
+        else if (testMode) {
+            return "t";
+        }
+        else if (hardMode) {
+            return "h";
+        } else {
+            return "n";
+        }
+
+    }
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
      */
@@ -72,6 +84,7 @@ public class TreasureHunter {
             hunter = new Hunter(name, 100);
         }
         if (hard.equals("e")) {
+
             hunter = new Hunter(name, 40);
             easyMode = true;
         }
@@ -141,6 +154,9 @@ public class TreasureHunter {
             System.out.println(hunter.infoString());
             System.out.println(currentTown.infoString());
             System.out.println((hunter.getTreasure()));
+            if (hunter.getTreasure().equals("You have found all the treasures CONGRATTTS!!!")) {
+                System.exit(0);
+            }
             System.out.println("(H)unt for treasure.");
             System.out.println("(B)uy something at the shop.");
             System.out.println("(S)ell something at the shop.");

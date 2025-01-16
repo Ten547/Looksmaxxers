@@ -41,6 +41,9 @@ public class Hunter {
         }
         if (count==0) {
             return "You found no treasure";
+        } else if (count==3) {
+            return "You found a " + treasures + "You have found all the treasures COGRATTTS!!!" ;
+
         }
         return "treasures found: " + end;
     }
