@@ -93,8 +93,6 @@ public class Shop {
         TreasureHunter addSword = new TreasureHunter();
         if (addSword.isSamuraiMode()) {
             str += "Sword: " + SWORD_COST + " gold\n";
-        } else {
-            return "";
         }
         return str;
     }
