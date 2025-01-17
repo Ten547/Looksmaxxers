@@ -26,7 +26,7 @@ public class TreasureHunter {
     private int treasurecount = 0;
     private String currentTreasure;
     private int digCount = 0;
-    private boolean samuraiMode;
+    private static boolean samuraiMode = false;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -57,8 +57,9 @@ public class TreasureHunter {
         }
         else if (hardMode) {
             return "h";
-        } else {
-
+        } else if (samuraiMode) {
+            return "s";
+        }else {
             return "n";
         }
 
@@ -92,7 +93,7 @@ public class TreasureHunter {
         }
         if (hard.equals("s")) {
             samuraiMode = true;
-            hunter = new Hunter(name, 0);
+            hunter = new Hunter(name, 1);
         }
 
     }

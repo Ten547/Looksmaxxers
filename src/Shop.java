@@ -49,7 +49,8 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0) {
+
+            if (cost == 0 && !TreasureHunter.mode().equals("s")) {
                 System.out.println("We ain't got none of those.");
             } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
@@ -90,8 +91,7 @@ public class Shop {
         str +=  "Boat: " + BOAT_COST  + " gold\n";
         str += "Boots: " + BOOTS_COST + " gold\n";
         str += "Shovel: " + SHOVEL_COST + " gold\n";
-        TreasureHunter addSword = new TreasureHunter();
-        if (addSword.isSamuraiMode()) {
+        if (TreasureHunter.mode().equals("s")) {
             str += "Sword: " + SWORD_COST + " gold\n";
         }
         return str;
@@ -104,7 +104,15 @@ public class Shop {
      */
     public void buyItem(String item) {
         int costOfItem = checkMarketPrice(item, true);
-        if (customer.buyItem(item, costOfItem)) {
+        if (item.equals("sword")) {
+            System.out.println("Its all yours free of charge");
+            System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+        }
+         else if (TreasureHunter.mode().equals("s")) {
+            System.out.println( "the sword intimidates the shopkeeper and he gives you the item freely");
+            System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+        }
+         else if (customer.buyItem(item, costOfItem)) {
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
         } else {
             System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");

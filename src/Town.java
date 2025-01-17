@@ -12,6 +12,7 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean easyTown;
+    private boolean scaredTown;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -54,6 +55,10 @@ public class Town {
             easyTown = true;
         } if (mode.equals("h")) {
             toughTown = true;
+        }
+        if (mode.equals("s")) {
+            scaredTown= true;
+
         }
         this.hunter = hunter;
         printMessage = "Welcome to town, " + hunter.getHunterName() + ".";
@@ -129,7 +134,12 @@ public class Town {
         } else {
             printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" +  Colors.RESET;
             int goldDiff = (int) (Math.random() * 10) + 1;
-            if (Math.random() > noTroubleChance) {
+            if (hunter.hasItemInKit("sword")) {
+                printMessage += "the brawler, seeing your sword, realizes he picked a losing fight and gives you his gold";
+                printMessage += "\nYou won the brawl and receive " + goldDiff + Colors.YELLOW + " gold." +  Colors.RESET;
+                hunter.changeGold(goldDiff);
+            }
+             else if (Math.random() > noTroubleChance) {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
                 printMessage += "\nYou won the brawl and receive " + goldDiff + Colors.YELLOW + " gold." +  Colors.RESET;
                 hunter.changeGold(goldDiff);

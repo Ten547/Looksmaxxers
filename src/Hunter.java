@@ -140,7 +140,7 @@ public class Hunter {
      * @param item The search item
      * @return true if the item is found.
      */
-    public boolean hasItemInKit(String item) {
+    public  boolean hasItemInKit(String item) {
         for (String tmpItem : kit) {
             if (item.equals(tmpItem)) {
                 // early return
