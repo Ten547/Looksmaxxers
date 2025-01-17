@@ -107,10 +107,12 @@ public class Shop {
         if (item.equals("sword")) {
             System.out.println("Its all yours free of charge");
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+            customer.addItem(item);
         }
          else if (TreasureHunter.mode().equals("s")) {
             System.out.println( "the sword intimidates the shopkeeper and he gives you the item freely");
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+            customer.addItem(item);
         }
          else if (customer.buyItem(item, costOfItem)) {
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
