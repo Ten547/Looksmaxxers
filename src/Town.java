@@ -12,6 +12,7 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean easyTown;
+    private boolean scaredTown;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -31,6 +32,7 @@ public class Town {
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
         easyTown = (Math.random() < toughness);
+        scaredTown = (0 < toughness);
     }
 
     public Terrain getTerrain() {
@@ -52,8 +54,12 @@ public class Town {
         System.out.println(mode);
         if (mode.equals("e")) {
             easyTown = true;
-        } if (mode.equals("h")) {
+        }
+        if (mode.equals("h")) {
             toughTown = true;
+        }
+        if (hunter.hasItemInKit("sword")) {
+            scaredTown = true;
         }
         this.hunter = hunter;
         printMessage = "Welcome to town, " + hunter.getHunterName() + ".";

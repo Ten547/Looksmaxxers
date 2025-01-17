@@ -12,6 +12,7 @@ public class Hunter {
     private ArrayList<String> inventory;
     private String[] treasure = new String[3];
     private String treasures;
+    private String[] kit2;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -27,6 +28,11 @@ public class Hunter {
         this.inventory = new ArrayList<>();
         if (startingGold==100) {
             kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots", "shovel"};
+        }
+        TreasureHunter addSword = new TreasureHunter();
+        if (addSword.isSamuraiMode()) {
+            kit2 = new String [8];
+            kit2 = new String[]{"water", "rope", "machete", "horse", "boat", "boots", "shovel, sword"};
         }
     }
 
