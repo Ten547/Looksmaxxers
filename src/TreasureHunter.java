@@ -17,11 +17,11 @@ public class TreasureHunter {
     // instance variables
     private Town currentTown;
     private Hunter hunter;
-    private boolean hardMode;
+    private static boolean hardMode = false;
     private int startingGold;
-    private boolean testMode;
+    private static boolean testMode = false;
     private String name;
-    private boolean easyMode;
+    private static boolean easyMode = false;
     private int count = 0;
     private int treasurecount = 0;
     private String currentTreasure;
@@ -47,7 +47,7 @@ public class TreasureHunter {
         enterTown();
         showMenu();
     }
-    public String mode() {
+    public static String mode() {
 
         if (easyMode) {
             return "e";
@@ -58,6 +58,7 @@ public class TreasureHunter {
         else if (hardMode) {
             return "h";
         } else {
+
             return "n";
         }
 

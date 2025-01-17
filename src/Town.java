@@ -47,8 +47,8 @@ public class Town {
      * @param hunter The arriving Hunter.
      */
     public void hunterArrives(Hunter hunter) {
-        TreasureHunter a = new TreasureHunter();
-        String mode = a.mode();
+
+        String mode = TreasureHunter.mode();
         System.out.println(mode);
         if (mode.equals("e")) {
             easyTown = true;
@@ -74,24 +74,25 @@ public class Town {
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
             printMessage = "You used your " + item + " to cross the " + Colors.CYAN + terrain.getTerrainName() +  Colors.RESET + ".";
-            if (checkItemBreak()) {
-                hunter.removeItemFromKit(item);
-                if (item.equals("water"))
-                    System.out.println("\\nUnfortunately, your " + item + " ran out.");
+            if (!easyTown) {
+                if (checkItemBreak()) {
+                    hunter.removeItemFromKit(item);
+                    if (item.equals("water"))
+                        System.out.println("\\nUnfortunately, your " + item + " ran out.");
                 } else if (item.equals("rope")) {
-                System.out.println("\nUnfortunately, your " + item + " ripped apart.");
+                    System.out.println("\nUnfortunately, your " + item + " ripped apart.");
                 } else if (item.equals("machete")) {
-                System.out.println("\nUnfortunately, your " + item + " was shattered.");
+                    System.out.println("\nUnfortunately, your " + item + " was shattered.");
                 } else if (item.equals("horse")) {
-                System.out.println("\nUnfortunately, your " + item + " is exhausted.");
+                    System.out.println("\nUnfortunately, your " + item + " is exhausted.");
                 } else if (item.equals("boat")) {
-                System.out.println("\nUnfortunately, your " + item + " sank.");
+                    System.out.println("\nUnfortunately, your " + item + " sank.");
                 } else if (item.equals("boots")) {
-                System.out.println("\nUnfortunately, your " + item + " wore down.");
-            } else if (item.equals("shovel")) {
-                System.out.println("\nUnfortunately, your " + item + " was used up.");
+                    System.out.println("\nUnfortunately, your " + item + " wore down.");
+                } else if (item.equals("shovel")) {
+                    System.out.println("\nUnfortunately, your " + item + " was used up.");
+                }
             }
-
             return true;
         }
 
@@ -174,7 +175,6 @@ public class Town {
     private boolean checkItemBreak() {
         System.out.println(easyTown);
         if (easyTown) {
-            System.out.println("lol");
         return false;
         } else {
             double rand = Math.random();
